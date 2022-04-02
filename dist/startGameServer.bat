@@ -1,0 +1,25 @@
+@echo off
+color 0D
+title L2jMega gameserver console
+:start
+REM -------------------------------------
+REM Default parameters for a basic server.
+java -XX:+UseConcMarkSweepGC -Xmx1G -cp ./libs/*; net.sf.l2j.gameserver.GameServer
+REM -------------------------------------
+if ERRORLEVEL 2 goto restart
+if ERRORLEVEL 1 goto error
+goto end
+:restart
+echo.
+echo Admin have restarted, please wait.
+echo.
+goto start
+:error
+echo.
+echo Server have terminated abnormaly.
+echo.
+:end
+echo.
+echo Server terminated.
+echo.
+pause
